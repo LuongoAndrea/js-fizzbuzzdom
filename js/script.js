@@ -8,19 +8,53 @@ Proviamo ad immaginare le operazioni che vogliamo far svolgere al nostro program
 BONUS 1: Crea un container nel DOM , aggiungendo (attraverso la funzione append()) un elemento html con il numero o la stringa corretta da mostrare.
 BONUS 2: Applica stili differenti agli elementi aggiunti al DOM nel BONUS 1, a seconda che il valore inserito sia un numero, un fizz, un buzz o un fizzbuzz.
 */
+const divWrap = document.querySelector("div.wrap");
+
+divWrap.classList.add('d-flex')
+
 for (let i = 0; i <= 100; i++) {
     let resto3 = (i % 3);
     let resto5 = (i % 5);
+    let resto2 = (i % 2);
+    // creo div 
+    const div = document.createElement('div.card');
+    div.classList.add('d-flex')
+    div.classList.add('card')
+    if(resto2 == 0){
+        div.classList.add('bg-black')
+    }
+    else{
+        div.classList.add('bg-white')
+    }
     if(resto3 == 0 && resto5 == 0){
-        console.log("FizzBuzz")
+        console.log("FizzBuzz");
+        // creo span
+        const text = document.createElement('span');
+
+        // appendo contenuto span
+        text.append('FizzBuzz');
+
+        // appendo span a div
+        div.append(text);
     }
     else if(resto3 == 0){
         console.log("Fizz");
+        const text = document.createElement('span');
+        text.append('Fizz');
+        div.append(text);
     }
     else if(resto5 == 0){
         console.log("Buzz");
+        const text = document.createElement('span');
+        text.append('Buzz');
+        div.append(text);
     }
     else{
         console.log(i);
+        const text = document.createElement('span');
+        text.append(i);
+        div.append(text);
     }
+    divWrap.append(div);
   }
+  
